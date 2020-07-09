@@ -59,11 +59,11 @@ pip install tensorflow==2.2 #stable
 
 
 #ubuntu18.04 CUDA10.1
-
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.1/extras/CUPTI/lib64>> ~/.bashrc'
+#https://github.com/tensorflow/tensorflow/issues/35860
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.1/extras/CUPTI/lib64'>> ~/.bashrc
 source ~/.bashrc
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.1/extras/CUPTI/lib64 #これはいらないかも
-
+sudo echo 'options nvidia "NVreg_RestrictProfilingToAdminUsers=0"' >> /etc/modprobe.d/nvidia-kernel-common.conf
 
 # Add NVIDIA package repositories
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
